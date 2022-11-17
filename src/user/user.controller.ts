@@ -7,6 +7,7 @@ import {
   Post,
   Req,
   Body,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { create } from 'domain';
 import { Request } from 'express';
@@ -28,13 +29,13 @@ export class UserController {
   @Patch('/:userId')
   update(
     @Body() updateUserDto: updateUserDto,
-    @Param() param: { userId: number },
+    @Param('userId', ParseIntPipe) userId: number,
   ) {
-    return this.UserService.update(updateUserDto, param);
+    return this.UserService.update(updateUserDto, userId);
   }
   @Get()
-  getusers(@Param() param: { userId: number }) {
-    return this.UserService.show(param);
+  getusers(@Param('userId', ParseIntPipe) userId: number) {
+    return this.UserService.show(userId);
   }
   @Delete()
   deleteUser(@Param() param: { userId: number }) {
