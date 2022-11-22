@@ -9,8 +9,8 @@ export class UserService {
   create(body: any) {
     return body;
   }
-  update(updateUserDto: updateUserDto, param: { userId: number }) {
-    return { body: updateUserDto, param };
+  update(updateUserDto: updateUserDto, userId: number) {
+    return { body: updateUserDto, userId };
   }
   show(userId: number) {
     return { userId };
